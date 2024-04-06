@@ -29,16 +29,15 @@ jobs:
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: ${{secrets.DOTNET_VERSION}}    
+        dotnet-version: 3.1.426
     - name: Listing Dotnet version
       run: dotnet --version
     - name: Restoring Dependencies
       run: dotnet restore
     - name: Building Dotnet
-      run: dotnet build -c release
+      run: dotnet build -c release -o /app/build
     - name: Dotnet Publish
-      run: dotnet publish -c release
-      # run:  dotnet publish -c release -o app/publish
+      run:  dotnet publish -c release -o /app/publish
     # - name: UploadArtifact
     #   uses: actions/upload-artifact@v4.3.1
     #   with:
